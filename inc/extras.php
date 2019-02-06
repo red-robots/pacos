@@ -24,6 +24,12 @@ function acstarter_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+    if ( is_home() || is_front_page() ) {
+        $classes[] = 'homepage';
+    } else {
+        $classes[] = 'subpage';
+    }
+
 	$browsers = ['is_iphone', 'is_chrome', 'is_safari', 'is_NS4', 'is_opera', 'is_macIE', 'is_winIE', 'is_gecko', 'is_lynx', 'is_IE', 'is_edge'];
     $classes[] = join(' ', array_filter($browsers, function ($browser) {
         return $GLOBALS[$browser];

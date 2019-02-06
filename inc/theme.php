@@ -20,7 +20,9 @@ function my_login_logo() {
       <?php if($logo_url) { ?>
         background-image: url(<?php echo $logo_url; ?>);
       <?php } ?> 
+      background-color: #404040;
       background-size: contain;
+      background-position: center center;
       width: 100%;
       height: 67px;
     }

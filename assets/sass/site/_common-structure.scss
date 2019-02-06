@@ -15,20 +15,31 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
-.clear:before, .clear:after { content: " "; display: table; }
-.clear { *zoom: 1; }
-.clear {clear: both;}
+body {
+	font-family: $font__main;
+	font-size: 16px;
+    letter-spacing: .4px;
+    line-height: 1.5;
+    color: rgba(13,13,13,.9);
+}
+.text-center {text-align:center;}
+.wrapper, .clear {clear: both;}
+.wrapper:before, .wrapper:after, .clear:before,.clear:after {content: " "; display: table; }
+.wrapper:after, .clear:after {clear: both;}
+.wrapper, .clear {*zoom: 1;}
 .wrapper {
 	width: 100%;
 	margin: 0px auto;
-	padding: 20px;
-	
+	box-sizing: border-box;
+	padding-left: 20px;
+	padding-right: 20px;
 	@media screen and (min-width: $tabwidth) {
 		width: 100%;
 	}
 	@media screen and (min-width: $deskwidth) {
-		width: 1200px;
-		padding: 0px;
+		width: 1000px;
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
@@ -61,28 +72,55 @@ div,h1,h2,h3,h4,h5,h6,p,li,a,span,strong {
 }
 
 /* Logo */
-.logo , h1.logo {
-	width: 300px;
-	margin: 10px auto;
-
+.logo {
+	width: 100%;
 	@media screen and (min-width: $tabwidth) {
-		width: 300px;
-		float: left;
-		margin: 0;
+		text-align: center;
 	}
-	@media screen and (min-width: $deskwidth) {
-		/*width: 1200px;*/
+	a {
+		display: inline-block;
+		width: 300px;
+	}
+	img {
+		width: 100%;
+		height: auto;
+		float: left;
 	}
 }
-.logo a, h1.logo a {
-	width: 300px;
-	display: block;
 
+.site-header {
+	position: relative;
+	z-index: 200;
+	width: 100%;
+	padding: 10px 0;
+	@include transition(all ease-out .3s);
 	@media screen and (min-width: $tabwidth) {
-		width: 300px;
+		padding: 43px 0;
 	}
-	@media screen and (min-width: $deskwidth) {
-		/*width: 1200px;*/
+	.inner {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+}
+
+.home .site-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: transparent;
+	&.sticky {
+		@media screen and (min-width: $tabwidth) {
+			background-color: rgba(63,56,54,.95);
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: 5px 0;
+		}
+	}
+}
+.site-header.sticky {
+	.logo {
+		display: none;
 	}
 }
 .site-footer {

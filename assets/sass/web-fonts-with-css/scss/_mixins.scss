@@ -55,3 +55,13 @@
     width: auto;
   }
 }
+
+
+@mixin fontdef($bebas-neue-font-path, $bebas-neue-font-name, $bebas-neue-font-version, $FontType:"Regular") {
+  src:  url('#{$bebas-neue-font-path}/#{$bebas-neue-font-name}-#{$FontType}.eot?v=#{$bebas-neue-font-version}');
+  src:  url('#{$bebas-neue-font-path}/#{$bebas-neue-font-name}-#{$FontType}.eot?#iefix&v=#{$bebas-neue-font-version}') format('embedded-opentype'),
+        url('#{$bebas-neue-font-path}/#{$bebas-neue-font-name}-#{$FontType}.woff2?v=#{$bebas-neue-font-version}') format('woff2'),
+        url('#{$bebas-neue-font-path}/#{$bebas-neue-font-name}-#{$FontType}.woff?v=#{$bebas-neue-font-version}') format('woff'),
+        url('#{$bebas-neue-font-path}/#{$bebas-neue-font-name}-#{$FontType}.ttf?v=#{$bebas-neue-font-version}') format('truetype'),
+        url('#{$bebas-neue-font-path}/#{$bebas-neue-font-name}-#{$FontType}.svg?v=#{$bebas-neue-font-version}##{$bebas-neue-font-name}#{$FontType}') format('svg');
+}

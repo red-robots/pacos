@@ -6,25 +6,10 @@ add_action('init', 'js_custom_init', 1);
 function js_custom_init() {
     $post_types = array(
         array(
-            'post_type' => 'team',
-            'menu_name' => 'Team',
-            'plural'    => 'Team',
-            'single'    => 'Team',
-            'menu_icon' => 'dashicons-groups',
-            'supports'  => array('title','editor','thumbnail')
-        ),
-        array(
-            'post_type' => 'story',
-            'menu_name' => 'Success Story',
-            'plural'    => 'Success Story',
-            'single'    => 'Success Story',
-            'supports'  => array('title','editor','thumbnail')
-        ),
-        array(
-            'post_type' => 'position',
-            'menu_name' => 'Assignments',
-            'plural'    => 'Assignments',
-            'single'    => 'Assignment',
+            'post_type' => 'rooms',
+            'menu_name' => 'Rooms',
+            'plural'    => 'Rooms',
+            'single'    => 'Room',
             'supports'  => array('title','editor','thumbnail')
         )
     );
