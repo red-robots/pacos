@@ -1829,7 +1829,7 @@ h1,h2,h3,h4,h5,h6{font-family:"Raleway",sans-serif;font-weight:500}
 .section .button a{display:inline-block;text-decoration:none}
 .section a{-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .section .imagediv img{width:100%;height:auto}
-.section .btn-red-border,.section .btn-white-border{display:inline-block;padding:9px 25px 8px;font-size:14px;text-transform:uppercase;letter-spacing:1px;border-radius:3px;background-color:transparent}
+.section .btn-red-border,.section .btn-white-border{display:inline-block;padding:9px 26px 8px;font-size:14px;text-transform:uppercase;letter-spacing:1px;border-radius:3px;background-color:transparent}
 .section .btn-red-border{color:#a21a0b;border:2px solid #a21a0b}
 .section .btn-red-border:hover{background-color:#a21a0b;color:#FFF}
 .section .btn-white-border{color:#FFF;border:solid 2px #FFF;opacity:.75}
@@ -1853,6 +1853,11 @@ h1,h2,h3,h4,h5,h6{font-family:"Raleway",sans-serif;font-weight:500}
 .food-menu ul{margin:0;padding:0;list-style:none;text-align:center}
 .food-menu li{display:inline-block;padding:0 40px}
 .food-menu a{text-decoration:none}
+.section.menus .food-menu li{margin-bottom:20px}
+@media screen and (min-width:600px){.section.menus .food-menu li{width:50%;float:left;padding:0}
+}@media screen and (min-width:900px){.section.menus .food-menu li{width:25%}
+}.section.menus .food-menu li a{width:180px;padding:12px 10px 10px;box-sizing:border-box}
+.section.menus .wrapper{padding-bottom:45px}
 .section.drinks{background-size:cover;background-color:#4a4a4a;background-position:center center;background-repeat:no-repeat;padding-top:100px;color:#FFF}
 .section.drinks .overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.65)}
 .section.drinks .content-image{border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:45px;margin-bottom:50px}

@@ -107,7 +107,7 @@ h1,h2,h3,h4,h5,h6 {
 	.btn-red-border,
 	.btn-white-border {
 		display: inline-block;
-		padding: 9px 25px 8px;
+		padding: 9px 26px 8px;
 		font-size: 14px;
 		text-transform: uppercase;
 		letter-spacing: 1px;
@@ -219,7 +219,27 @@ h1,h2,h3,h4,h5,h6 {
 		text-decoration: none;
 	}
 }
-
+.section.menus {
+	.food-menu li {
+		margin-bottom: 20px;
+		@media screen and (min-width: $tabwidth) {
+			width: 50%;
+			float: left;
+			padding: 0 0;
+		}
+		@media screen and (min-width: $midwidth) {
+			width: 25%;
+		}
+		a {
+			width: 180px;
+			padding: 12px 10px 10px;
+			box-sizing: border-box;
+		}
+	}
+	.wrapper {
+		padding-bottom: 45px;
+	}
+}
 .section.drinks {
 	background-size: cover;
 	background-color: $color-grey;
