@@ -46,6 +46,12 @@ function add_query_vars_filter( $vars ) {
 }
 add_filter( 'query_vars', 'add_query_vars_filter' );
 
+function remove_private_prefix($title) {
+    $title = str_replace('Private: ', '', $title);
+    return $title;
+}
+add_filter('the_title', 'remove_private_prefix');
+
 
 /* GENERATE SITEMAP */
 function generate_sitemap($menuName='top-menu',$pageWithCats=null,$orderByNavi=null) {

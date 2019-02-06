@@ -1,7 +1,7 @@
 <?php
 $wp_query = new WP_Query(array('pagename'=>'menus'));
 if ( have_posts() ) : the_post(); ?>
-<section id="menus" class="section text-center delivery menus clear">
+<section id="menus" class="section text-center menus clear">
 	<div class="wrapper">
 		<div class="maintext clear"><?php the_content(); ?></div>
 		<?php

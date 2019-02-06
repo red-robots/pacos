@@ -2,6 +2,15 @@ h1,h2,h3,h4,h5,h6 {
 	font-family: $font-heading;
 	font-weight: 500;
 }
+p a {
+	color: $color-red;
+	text-decoration: none;
+	@include transition(all ease-out .3s);
+	&:hover {
+		color: $color-red;
+		opacity: 0.5;
+	}
+}
 .banner {
 	position: relative;
 	background-color: $color-grey;
@@ -324,5 +333,16 @@ h1,h2,h3,h4,h5,h6 {
 		top: 3px;
 		right: 0;
 	}
-
+}
+.section.dining {
+	.section-title {
+		color: $color-green;
+		margin: 0 0;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	.maintext {
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 30px;
+	}
 }

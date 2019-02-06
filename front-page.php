@@ -16,6 +16,9 @@
 			/* DRINKS */
 			get_template_part('template-parts/_drinks'); 
 
+			/* PRIVATE DINING */
+			get_template_part('template-parts/_private_dining'); 
+
 		?>
 	</div><!-- #primary -->
 <?php
