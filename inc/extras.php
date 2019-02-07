@@ -262,3 +262,23 @@ function get_post_by_slug($slug) {
     $result = $wpdb->get_row( "SELECT * FROM $wpdb->posts WHERE post_name = '".$slug."'" );
     return ($result) ? $result : '';
 }
+
+
+function custom_search_items($search,$offset=0,$limit=5) {
+    global $wpdb;
+    if(empty($search)) return false;
+    $prefix = $wpdb->prefix; 
+    $query = "SELECT * FROM $wpdb->posts WHERE (post_title LIKE '%".$search."%' OR post_content LIKE '%".$search."%') AND post_status='publish' AND (post_type='page' OR post_type='rooms') GROUP BY ID ORDER BY post_title ASC LIMIT ".$offset.",".$limit; 
+    $result = $wpdb->get_results($query);
+    $output = array();
+    if($result) {
+        $query_total = "SELECT * FROM $wpdb->posts WHERE (post_title LIKE '%".$search."%' OR post_content LIKE '%".$search."%') AND post_status='publish' AND (post_type='page' OR post_type='rooms') GROUP BY ID"; 
+        $count_items = $wpdb->get_results($query_total);
+        $count = count($count_items);
+        $output['total'] = $count;
+        $output['records'] = $result;
+    }
+    return ($output) ? $output : false;
+}
+
+
