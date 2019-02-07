@@ -19,6 +19,12 @@
 			/* PRIVATE DINING */
 			get_template_part('template-parts/_private_dining'); 
 
+			/* CAREERS */
+			get_template_part('template-parts/_careers'); 
+
+			/* GIFT CARDS */
+			get_template_part('template-parts/_gift_cards'); 
+
 		?>
 	</div><!-- #primary -->
 <?php

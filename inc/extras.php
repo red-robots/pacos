@@ -255,3 +255,10 @@ add_filter("gform_init_scripts_footer", "init_scripts");
 function init_scripts() {
     return true;
 }
+
+function get_post_by_slug($slug) {
+    global $wpdb;
+    if(empty($slug)) return false;
+    $result = $wpdb->get_row( "SELECT * FROM $wpdb->posts WHERE post_name = '".$slug."'" );
+    return ($result) ? $result : '';
+}

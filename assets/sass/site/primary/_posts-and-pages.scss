@@ -17,11 +17,19 @@ p a {
 	background-size: cover;
 	background-position: top center;
 	background-repeat: no-repeat;
+	height: 530px;
+	@media screen and (min-width: $tabwidth) {
+		height: auto;
+	}
 	img {
+		display: none;
 		visibility: hidden;
 		width: 100%;
 		height: auto;
 		position: relative;
+		@media screen and (min-width: $tabwidth) {
+			display: block;
+		}
 	}
 	.overlay {
 		position: absolute;
@@ -87,12 +95,16 @@ p a {
 		}
 	}
 }
-.logo {
-	width: 100%;
-	text-align: center;
-}
 .section {
 	position: relative;
+	.overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,.65);
+	}
 	h2 {
 		font-size: 30px;
 	}
@@ -256,14 +268,6 @@ p a {
 	background-repeat: no-repeat;
 	padding-top: 100px;
 	color: #FFF;
-	.overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0,0,0,.65);
-	}
 	.content-image  {
 		border-bottom: 1px solid rgba(255,255,255,.3);
 		padding-bottom: 45px;
@@ -335,6 +339,10 @@ p a {
 	}
 }
 .section.dining {
+	border-bottom: 1px solid #DDD;
+	.wrapper {
+		padding-bottom: 10px;
+	}
 	.section-title {
 		color: $color-green;
 		margin: 0 0;
@@ -342,7 +350,301 @@ p a {
 		text-transform: uppercase;
 	}
 	.maintext {
-		border-bottom: 1px solid #ddd;
 		padding-bottom: 30px;
+	}
+}
+.room-info {
+	border-top: 1px solid #DDD;
+	margin-bottom: 50px;
+	padding-top: 60px;
+	.col {
+		box-sizing: border-box;
+		@media screen and (min-width: $tabwidth) {
+			float: left;
+		}
+	}
+	.col.one {
+		text-align: center;
+		margin-bottom: 30px;
+		@media screen and (min-width: $tabwidth) {
+			width: 20%;
+		}
+	}
+	.col.two {
+		@media screen and (min-width: $tabwidth) {
+			width: 80%;
+			padding-left: 15px;
+		}
+	}
+
+	&.has-image .col.two {
+		@media screen and (min-width: $tabwidth) {
+			width: 45%;
+			padding-right: 10px;
+		}
+	}
+	.col.three {
+		@media screen and (min-width: $tabwidth) {
+			width: 35%;
+			padding-left: 20px;
+		}
+	}
+	p {
+		margin-top: 0;
+		margin-bottom: 15px;
+		position: relative;
+		top:-5px;
+	}
+	.roomname {
+		font-family: $font-bebas-bold;
+		font-size: 20px;
+		margin: 0 0 25px;
+		color: $color-maroon;
+		text-transform: uppercase;
+	}
+	.poweredby {
+		margin-top: 30px;
+	}
+	.poweredby img {
+		width: 130px;
+		height: auto;
+	}
+}
+
+.section.careers {
+	.maintext.has-image .col.one {
+		@media screen and (min-width: $tabwidth) {
+			width: 50%;
+			float: left;
+		}
+	}
+	.section-title {
+		margin-top: 0;
+		margin-bottom: 10px;
+	}
+	p {
+		margin-top: 0;
+	}
+	.col.two {
+		@media screen and (min-width: $tabwidth) {
+			width: 45%;
+			float: right;
+		}
+	}
+	.button {
+		margin-top: 40px;
+	}
+	.poweredby {
+		margin-top: 30px;
+	}
+}
+
+.section.giftcards {
+	background-size: cover;
+	background-color: $color-grey;
+	background-repeat: no-repeat;
+	background-position: center center;
+	.wrapper {
+		padding-top: 60px;
+		padding-bottom: 60px;
+		@media screen and (min-width: $tabwidth) {
+			padding-top: 200px;
+			padding-bottom: 200px;
+		}
+	}
+	.imagediv img {
+		width: 150px;
+		height: auto;
+	}
+	.section-title {
+		font-family: $font-bebas-bold;
+		font-size: 28px;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: $color-yellow;
+		margin: 0 0 10px;
+		@media screen and (min-width: $tabwidth) {
+			font-size: 38px;
+		}
+	}
+	.button a {
+		padding: 15px 35px;
+		font-size: 16px;
+		opacity: 0.9;
+	}
+}
+.social-media {
+	padding-bottom: 30px;
+	a {
+		display: inline-block;
+		background: #FFF;
+		color: #332c29;
+		font-size: 18px;
+		width: 36px;
+		height: 36px;
+		line-height: 36px;
+		border-radius: 200px;
+		text-align: center;
+		margin: 0 3px;
+		.icon {
+			position: relative;
+			left: 1px;
+		}
+	}
+}
+#cboxClose {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+}
+#cboxTitle {
+	width: 100%;
+	float: left;
+	position: relative!important;
+	padding: 5px 10px;
+}
+.default-temp {
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+.sticky-contact-form {
+	max-width: 100%;
+	width: 100%;
+	color: #FFF;
+	box-sizing: border-box;
+	position: fixed;
+	bottom: 0;
+	z-index: 20000;
+	@media screen and (min-width: $tabwidth) {
+		max-width: 300px;
+		right: 30px;
+	}
+	.wrapp {
+		background: #98b345;
+		width: 85%;
+		margin: 0 auto;
+		-webkit-border-top-left-radius: 3px;
+		-webkit-border-top-right-radius: 3px;
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-topright: 3px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		@media screen and (min-width: $tabwidth) {
+			width: 100%;
+			margin: 0 0;
+		}
+	}
+	.inside {
+		padding: 15px 15px 0;
+	}
+	.titlediv {
+		cursor: pointer;
+		border-bottom: solid 1px #809a33;
+		position: relative;
+	}
+	.titlediv a {
+		display: block;
+		padding: 8px 15px;
+		color: #FFF;
+		outline: none;
+		text-decoration: none;
+	}
+	.titlediv .icon {
+		position: absolute;
+		right: 15px;
+		font-size: 30px;
+		top: 1px;
+		@include transition(all ease .2s);
+	}
+	.note {
+		font-weight: 300;
+		font-size: 13px;
+		line-height: 1.4;
+	}
+	.note p {
+		margin-top: 0;
+	}
+	.gform_wrapper ul.gform_fields li.gfield.gfield_error+li.gfield.gfield_error {
+		margin-top: 0;
+	}
+	.gform_wrapper .field_description_below .gfield_description {
+		padding-top: 0;
+	}
+	.gform_wrapper .top_label div.ginput_container {
+		margin-top: 2px!important;
+	}
+	.gform_wrapper .gfield_required {
+		display: none;
+	}
+	.gform_wrapper textarea.large,
+	.gform_wrapper.gf_browser_chrome ul.gform_fields li.gfield select,
+	.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
+		font-size: 14px;
+		line-height: 1.2;
+		outline: none;
+		border-radius: 3px;
+		border: solid 1px #859f37;
+    	background-color: #ffffff;
+	}
+	.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
+		height: 32px;
+    	line-height: 32px;
+	}
+	.gform_wrapper textarea.large {
+		height: 78px!important;
+	}
+	.gform_wrapper .top_label .gfield_label, .gform_wrapper legend.gfield_label {
+		font-weight: normal;
+		font-size: 13px;
+	}
+	.gform_wrapper ul li.gfield {
+		margin-top: 10px;
+		padding-right: 0!important;
+	}
+
+	.gform_wrapper .top_label div.ginput_container {
+		margin-top: 0;
+	}
+	.gform_wrapper.gf_browser_chrome ul.gform_fields li.gfield select {
+		height: 32px;
+    	line-height: 32px;
+	}
+	.gform_wrapper .gform_footer {
+		margin-top: 10px;
+		padding: 0 0;
+	}
+	.gform_wrapper .gform_footer input[type=submit] {
+		color: #FFF;
+    	background: #b7da7a;
+    	padding: 8px 26px;
+    	margin: 0 0;
+    	-webkit-appearance: none;
+    	box-shadow: none;
+    	text-shadow: none;
+    	border: none;
+    	width: 100%;
+    	box-sizing: border-box;
+		line-height: 18px!important;
+	}
+	.gform_wrapper div.validation_error {
+		display: none;
+	}
+	.gform_wrapper .validation_message {
+		font-size: 12px;
+	}
+	.gform_wrapper li.gfield.gfield_error {
+		border-top: none;
+		border-bottom: none;
+		background-color: transparent;
+		padding-bottom: 0;
+		padding-top: 0;
+	}
+}
+#formContents {
+	display: none;
+}
+.sticky-contact-form.open {
+	.icon {
+		transform: rotate(180deg);
 	}
 }

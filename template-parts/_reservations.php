@@ -1,17 +1,20 @@
 <?php
-$wp_query = new WP_Query(array('pagename'=>'reservations'));
-if ( have_posts() ) : the_post(); ?>
+$post = get_post_by_slug('reservations');
+if ( $post ) { 
+$post_id = $post->ID;
+$post_title = $post->post_title;
+$content = apply_filters( 'the_content', $post->post_content ); ?>
 <section id="reservations" class="section text-center reservations clear">
 	<div class="wrapper">
-		<div class="maintext clear"><?php the_content(); ?></div>
+		<div class="maintext clear"><?php echo $content; ?></div>
 		<?php
-			$content_2_title = get_field('content_2_title');
-			$powered_by_text = get_field('powered_by_text');
-			$powered_by_logo = get_field('powered_by_logo');
-			$button_name = get_field('button_name');
-			$button_link = get_field('button_link');
-			$bottom_title = get_field('bottom_title');
-			$bottom_text = get_field('bottom_text');
+			$content_2_title = get_field('content_2_title',$post_id);
+			$powered_by_text = get_field('powered_by_text',$post_id);
+			$powered_by_logo = get_field('powered_by_logo',$post_id);
+			$button_name = get_field('button_name',$post_id);
+			$button_link = get_field('button_link',$post_id);
+			$bottom_title = get_field('bottom_title',$post_id);
+			$bottom_text = get_field('bottom_text',$post_id);
 		?>
 		<?php if($content_2_title) { ?>
 			<h2 class="title2"><?php echo $content_2_title; ?></h2>
@@ -39,4 +42,4 @@ if ( have_posts() ) : the_post(); ?>
 
 	</div>
 </section>
-<?php endif; ?>
+<?php } ?>

@@ -37,8 +37,14 @@ jQuery(document).ready(function ($) {
 	------------------------------------*/
 	$('a.gallery').colorbox({
 		rel:'gal',
-		width: '80%', 
-		height: '80%'
+		width: '90%', 
+		height: '90%'
+	});
+
+	$('a.colorboxNoSlide').colorbox({
+		width: '90%', 
+		height: '90%',
+		slideshow: false
 	});
 	
 	/*
@@ -90,6 +96,24 @@ jQuery(document).ready(function ($) {
 			}
 	    }
 	});
+
+	var scrollTop = $(".scrollTop");
+    $(window).scroll(function() {
+        var topPos = $(this).scrollTop();
+        if (topPos > 100) {
+          // $(scrollTop).css({
+          //   "opacity":1,
+          //   "z-index":3000
+          // });
+          	$("body").addClass('scrolled');
+        } else {
+        	$("body").removeClass('scrolled');
+          // $(scrollTop).css({
+          //   "opacity":0,
+          //   "z-index":"-999"
+          // });
+        }
+    });
 
 
 	/* STICKY NAV */
@@ -145,6 +169,18 @@ jQuery(document).ready(function ($) {
 	------------------------------------*/
 	new WOW().init();
 
+	/* Sticky Contact Form */
+	$(document).on("click","#contactFormPp",function(e){
+		e.preventDefault();
+		$(".sticky-contact-form").toggleClass('open');
+		$("#formContents").slideToggle();
+	});
+
+	$(document).on("click","#primary-mobile-menu a",function(){
+		$("body").removeClass("open-mobile-menu");
+		$("#mobile-navigation").removeClass("open");
+		$("#toggleMenu").removeClass("open");
+	});
 
 	$(document).on("click","#toggleMenu",function(){
 		$(this).toggleClass('open');
@@ -157,5 +193,28 @@ jQuery(document).ready(function ($) {
 			$('.mobile-navigation').addClass("overflow-height");
 		}
 	});
+
+
+	/* Add target Attribute if External Link */
+	$("#primary-menu a, #primary-mobile-menu a").each(function(){
+		var url = $(this).attr('href');
+		var anchor = $(this);
+		var txt = anchor.text();
+		if ( url.indexOf("#") != -1 ) {
+			var newURL = siteURL + '/' + url;
+			anchor.attr('href',newURL);
+		} else {
+			var page_url = getBaseUrl();
+			if (url.indexOf(page_url) ) {
+				anchor.attr("target","_blank");
+			} 
+		}
+	});
+
+	function getBaseUrl() {
+	    var re = new RegExp(/^.*\//);
+	    var url = re.exec(window.location.href);
+	    return url[0];
+	}
 
 });// END #####################################    END

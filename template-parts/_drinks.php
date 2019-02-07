@@ -1,10 +1,12 @@
-<?php
-$wp_query = new WP_Query(array('pagename'=>'drinks'));
-if ( have_posts() ) : the_post(); ?>
+<?php 
+$post = get_post_by_slug('drinks');
+if ( $post ) { 
+$post_id = $post->ID;
+$content = apply_filters( 'the_content', $post->post_content ); ?>
 
 <?php
-	$background_image = get_field('background_image');
-	$overlay_logo = get_field('overlay_logo');
+	$background_image = get_field('background_image',$post_id);
+	$overlay_logo = get_field('overlay_logo',$post_id);
 	$style = '';
 	if($background_image) {
 		$style = ' style="background-image:url('.$background_image['url'].')"';
@@ -22,11 +24,11 @@ if ( have_posts() ) : the_post(); ?>
 		<?php } ?>
 
 		<?php
-			$drinks = get_field('drinks'); 
-			$column_1_title = get_field('column_1_title'); 
-			$sample_drinks = get_field('sample_drinks'); 
-			$column_2_title = get_field('column_2_title'); 
-			$daily_features = get_field('daily_features'); 
+			$drinks = get_field('drinks',$post_id); 
+			$column_1_title = get_field('column_1_title',$post_id); 
+			$sample_drinks = get_field('sample_drinks',$post_id); 
+			$column_2_title = get_field('column_2_title',$post_id); 
+			$daily_features = get_field('daily_features',$post_id); 
 		?>
 
 		<?php if($drinks) { ?>
@@ -107,4 +109,4 @@ if ( have_posts() ) : the_post(); ?>
 	</div>
 </section>
 
-<?php endif; ?>
+<?php } ?>
