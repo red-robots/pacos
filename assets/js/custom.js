@@ -202,7 +202,9 @@ jQuery(document).ready(function ($) {
 		var txt = anchor.text();
 		if ( url.indexOf("#") != -1 ) {
 			var newURL = siteURL + '/' + url;
-			anchor.attr('href',newURL);
+			if(currentPage=='subpage') {
+				anchor.attr('href',newURL);
+			}
 		} else {
 			var page_url = getBaseUrl();
 			if (url.indexOf(page_url) ) {
