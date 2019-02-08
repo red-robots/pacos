@@ -266,7 +266,7 @@ function init_scripts() {
 function get_post_by_slug($slug) {
     global $wpdb;
     if(empty($slug)) return false;
-    $result = $wpdb->get_row( "SELECT * FROM $wpdb->posts WHERE post_name = '".$slug."'" );
+    $result = $wpdb->get_row( "SELECT * FROM $wpdb->posts WHERE post_name = '".$slug."' AND post_status='publish'" );
     return ($result) ? $result : '';
 }
 
