@@ -2,7 +2,7 @@
 get_header(); 
 $string = ( isset($_GET['q']) && $_GET['q'] ) ? $_GET['q'] : '';
 $page = ( isset($_GET['pg']) && $_GET['pg'] ) ? $_GET['pg'] : 1;
-$limit = 2;
+$limit = 5;
 $x = $page*$limit;
 $x = $x-$limit;
 $offset = $x;
