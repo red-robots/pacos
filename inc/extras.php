@@ -250,6 +250,13 @@ function shortenText($string, $limit, $break=".", $pad="...") {
   return $string;
 }
 
+function truncateWords($input, $numwords, $padding="...") {
+    $output = strtok($input, " \n");
+    while(--$numwords > 0) $output .= " " . strtok(" \n");
+    if($output != $input) $output .= $padding;
+    return $output;
+}
+
 /* Fixed Gravity Form Conflict Js */
 add_filter("gform_init_scripts_footer", "init_scripts");
 function init_scripts() {
@@ -268,17 +275,83 @@ function custom_search_items($search,$offset=0,$limit=5) {
     global $wpdb;
     if(empty($search)) return false;
     $prefix = $wpdb->prefix; 
-    $query = "SELECT * FROM $wpdb->posts WHERE (post_title LIKE '%".$search."%' OR post_content LIKE '%".$search."%') AND post_status='publish' AND (post_type='page' OR post_type='rooms') GROUP BY ID ORDER BY post_title ASC LIMIT ".$offset.",".$limit; 
+    $query = "SELECT * FROM $wpdb->posts WHERE (post_title LIKE '%".$search."%' OR post_content LIKE '%".$search."%') AND (post_type='page' OR post_type='rooms') AND post_status='publish' GROUP BY ID ORDER BY post_title ASC LIMIT ".$offset.",".$limit; 
     $result = $wpdb->get_results($query);
     $output = array();
     if($result) {
-        $query_total = "SELECT * FROM $wpdb->posts WHERE (post_title LIKE '%".$search."%' OR post_content LIKE '%".$search."%') AND post_status='publish' AND (post_type='page' OR post_type='rooms') GROUP BY ID"; 
+        $query_total = "SELECT * FROM $wpdb->posts WHERE (post_title LIKE '%".$search."%' OR post_content LIKE '%".$search."%') AND (post_type='page' OR post_type='rooms') AND post_status='publish' GROUP BY ID"; 
         $count_items = $wpdb->get_results($query_total);
         $count = count($count_items);
         $output['total'] = $count;
+        $output['is_end'] = false;
         $output['records'] = $result;
+        $offset = $offset-1;
+        $end = $offset * $limit;
+        if($limit>=$count) {
+            $output['is_end'] = true;
+        } else {
+            if($end>$count) {
+                $output['is_end'] = true;
+            }
+        }
     }
     return ($output) ? $output : false;
 }
 
+
+add_action("wp_ajax_load_result", "load_result");
+add_action("wp_ajax_nopriv_load_result", "load_result");
+function load_result() {
+    $page = ($_POST["page"]) ? $_POST["page"] : 1;
+    $next = $page + 1;
+    $search = $_POST["search"];
+    $limit = ($_POST["limit"]) ? $_POST["limit"] : 5;
+    $x = $page*$limit;
+    $x = $x-$limit;
+    $offset = $x;
+
+    $content = custom_search_items($search,$offset,$limit);
+    if($content) {
+        $is_end = $content['is_end'];
+        $html = results_html($content,$page);
+        $response = array('content'=>$html,'page' => $page,'next_page'=>$next,'data'=>$content,'is_end'=>$is_end);
+    } else {
+        $response = array('content'=>'');
+    }
+
+    echo json_encode($response);
+    die();
+}
+
+function results_html($result,$pagenum=1,$refresh=null) {
+    if(!$result) return false;
+    $is_end = $result['is_end'];
+    $total = $result['total'];
+    $records = $result['records'];
+    $content = '';
+    $next_pagenum = $pagenum + 1;
+    ob_start();
+    foreach($records as $row) { 
+        $post_id = $row->ID;
+        $post_title = $row->post_title;
+        $page_link = get_permalink($post_id);
+        $content = strip_tags($row->post_content);
+        $text_content = ($content) ? shortenText($content,200) : ''; 
+        $is_hide = ($refresh) ? '':' hide';
+        ?>
+        <div id="post_<?php echo $post_id;?>" class="entry clear result-item<?php echo $is_hide; ?>" data-url="<?php echo $page_link;?>">
+            <h3 class="title"><?php echo $post_title; ?></h3>
+            <div class="summary"><?php echo $text_content; ?></div>
+        </div>
+    <?php } ?>
+
+        <?php if(!$is_end) { ?>
+            <div id="vm_buton_<?php echo $pagenum; ?>" class="view-more-button text-center clear"><a href="#" id="moreResultButton" data-nextpage="<?php echo $next_pagenum; ?>">See More</a></div>
+         <?php } ?>
+
+    <?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
+}
 

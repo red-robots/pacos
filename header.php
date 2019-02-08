@@ -1,14 +1,5 @@
 <?php
-/**
- * The header for theme.
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package ACStarter
- */
-
+$urlParam = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'] . $_SERVER["REQUEST_URI"];
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -21,6 +12,8 @@
 <script type="text/javascript">
 	var siteURL = '<?php echo get_site_url(); ?>';
 	var currentPage = '<?php echo ( is_front_page() ) ? 'home':'subpage'; ?>';
+	var full_URL = '<?php echo $urlParam?>';
+	var currentURL = '<?php echo get_permalink()?>';
 </script>
 
 <?php wp_head(); ?>

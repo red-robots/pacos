@@ -32,6 +32,14 @@ function acstarter_scripts() {
 		true 
 	);
 
+	wp_enqueue_script( 
+		'load_result', 
+		get_template_directory_uri() . '/assets/js/search.js', 
+		array('jquery'), '20190201', 
+		true 
+	);
+    wp_localize_script('load_result', 'ajax_url', array('ajaxurl' => admin_url('admin-ajax.php')));
+
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
