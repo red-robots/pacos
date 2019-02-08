@@ -644,9 +644,18 @@ p a {
 		padding-top: 0;
 	}
 }
+
+.sticky-contact-form .gform_confirmation_wrapper {
+	padding: 10px;
+	background: green;
+	line-height: 1.2;
+	margin-bottom: 25px;
+}
+
 #formContents {
 	display: none;
 }
+
 .sticky-contact-form.open {
 	.icon {
 		transform: rotate(180deg);
