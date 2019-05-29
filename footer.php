@@ -5,6 +5,7 @@
 		$phone = get_field('phone','option');
 		$facebook = get_field('facebook','option');
 		$instagram = get_field('instagram','option');
+		$twitter = get_field('twitter','option');
 		$footer_logos = get_field('footer_logos','option');
 	?>
 
@@ -20,12 +21,26 @@
 						<?php if($instagram) { ?>
 							<a class="instagram" href="<?php echo $instagram?>" target="_blank"><i class="fab fa-instagram icon"></i></a>
 						<?php } ?>
+						<?php if($twitter) { ?>
+							<a class="twitter" href="<?php echo $twitter?>" target="_blank"><i class="fab fa-twitter icon"></i></a>
+						<?php } ?>
 					</div>
 				<?php } ?>
 
-				<?php if($footer_logos) { ?>
-				<div class="footer-logo clear"><img src="<?php echo $footer_logos['url']?>" alt="<?php echo $footer_logos['title']?>" /></div>
-				<?php } ?>
+				<?php if(have_rows('restaurants_logos', 'option')) : ?>
+					<div class="footer-logos clear">
+						<?php while(have_rows('restaurants_logos', 'option')) :  the_row(); 
+						$img = get_sub_field('logo', 'option');
+						$link = get_sub_field('link', 'option');
+					?>
+						<div class="restaurant">
+							<a href="<?php echo $link; ?>">
+								<img src="<?php echo $img['url']?>" alt="<?php echo $img['alt']?>" />
+							</a>
+						</div>
+						<?php endwhile; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 
