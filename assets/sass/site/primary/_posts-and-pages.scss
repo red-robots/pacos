@@ -211,15 +211,28 @@ p a {
 		margin-bottom: 30px;
 		border-bottom: none;
 	}
-	.apps img {
-		width: 100%;
-		height: auto;
-		float: left;
-	}
-	.apps a {
-		display: inline-block;
-		width: 140px;
-		margin: 40px 5% 0;
+	.apps {
+		@media screen and (max-width: $xswidth) {
+			margin-top: 20px;
+		}
+	
+		img {
+			width: 100%;
+			height: auto;
+			float: left;
+		}
+		a {
+			display: inline-block;
+			width: 140px;
+			margin: 40px 5% 0;
+			&:hover {
+				opacity: 0.75;
+			}
+			@media screen and (max-width: $xswidth) {
+				margin-top: 15px;
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 
@@ -243,24 +256,61 @@ p a {
 .section.menus {
 	.food-menu li {
 		margin-bottom: 20px;
-		@media screen and (min-width: $tabwidth) {
-			width: 50%;
-			float: left;
-			padding: 0 0;
-		}
-		@media screen and (min-width: $midwidth) {
-			width: 25%;
-		}
 		a {
 			width: 180px;
 			padding: 12px 10px 10px;
 			box-sizing: border-box;
+			@include mid {
+				width: 168px;
+			}
+			@include desk {
+				width: 180px;
+			}
+			@media screen and (max-width: $xswidth) {
+				width: 85%;
+			}
 		}
 	}
 	.wrapper {
-		padding-bottom: 45px;
+		padding-bottom: 10px;
+		@media screen and (max-width: $xswidth) {
+			padding-top: 35px!important;
+		}
+	}
+	.food-menu {
+		max-width: 100%;
+		width: 100%;
+		margin: 0 auto 40px;
+		@include desk {
+			max-width: 90%;
+		}
+	}
+	.food-menu ul.menuInfo {
+		@include flexbox();
+		@include flexbox-wrap(wrap);
+		@include flexbox-justify(center);
+		text-align: center;
+		li {
+			display: inline-block;
+			width: auto;
+			float: none;
+			padding: 15px 15px;
+			margin: 0 0;
+			@include mid {
+				padding: 15px 15px;
+			}
+			@include desk {
+				padding: 15px 25px;
+			}
+			@media screen and (max-width: $xswidth) {
+				display: block;
+				padding: 8px 15px;
+				width: 100%!important;
+			}
+		}
 	}
 }
+
 .section.drinks {
 	background-size: cover;
 	background-color: $color-grey;

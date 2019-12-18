@@ -1,3 +1,9 @@
+@mixin xs { @media (min-width: $xswidth) { @content; } }
+@mixin tab { @media (min-width: $tabwidth) { @content; } }
+@mixin mid { @media (min-width: $midwidth) { @content; } }
+@mixin desk {  @media (min-width: $deskwidth) { @content; } }
+
+
 // Rem output with px fallback
 @mixin font-size($sizeValue: 1) {
 	font-size: ($sizeValue * 16) * 1px;
@@ -66,3 +72,24 @@
 	-webkit-transform: translateX($value1) translateY($value2);
 	transform: translateX($value1) translateY($value2);
   }
+
+
+ @mixin flexgroup() {
+	@include flexbox();
+	@include flexbox-wrap(wrap);
+	@include flexbox-direction(row);
+}
+@mixin flexgroup-center() {
+	@include flexbox();
+	@include flexbox-wrap(wrap);
+	@include flexbox-direction(row);
+	@include flexbox-align-items(center);
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}

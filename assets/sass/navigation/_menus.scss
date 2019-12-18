@@ -61,7 +61,7 @@
 	z-index: 10000;
 	border: 5px solid transparent;
 	@include transition(all ease-out .3s);
-	@media screen and (min-width: $tabwidth) {
+	@media screen and (min-width: $midwidth) {
 		display: none;
 	}
 	span,
