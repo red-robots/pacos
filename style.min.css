@@ -1894,7 +1894,8 @@ p a:hover{color:#e2080c;opacity:.5}
 .section.menus .food-menu li{margin-bottom:20px}
 .section.menus .food-menu li a{width:180px;padding:12px 10px 10px;box-sizing:border-box}
 @media(min-width:960px){.section.menus .food-menu li a{width:168px}
-}@media(min-width:1200px){.section.menus .food-menu li a{width:180px}
+}@media screen and (min-width:1200px){.section.menus .food-menu li a{width:165px}
+}@media screen and (min-width:1500px){.section.menus .food-menu li a{width:180px}
 }@media screen and (max-width:380px){.section.menus .food-menu li a{width:85%}
 }.section.menus .wrapper{padding-bottom:10px}
 @media screen and (max-width:380px){.section.menus .wrapper{padding-top:35px !important}
@@ -1902,8 +1903,10 @@ p a:hover{color:#e2080c;opacity:.5}
 @media(min-width:1200px){.section.menus .food-menu{max-width:90%}
 }.section.menus .food-menu ul.menuInfo{display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-justify-content:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;text-align:center}
 .section.menus .food-menu ul.menuInfo li{display:inline-block;width:auto;float:none;padding:15px 15px;margin:0}
-@media(min-width:960px){.section.menus .food-menu ul.menuInfo li{padding:15px 15px}
-}@media(min-width:1200px){.section.menus .food-menu ul.menuInfo li{padding:15px 25px}
+@media(min-width:960px){.section.menus .food-menu ul.menuInfo li{padding:15px 8px}
+}@media screen and (min-width:1100px){.section.menus .food-menu ul.menuInfo li{padding:15px 10px}
+}@media screen and (min-width:1350px){.section.menus .food-menu ul.menuInfo li{padding:15px 15px}
+}@media screen and (min-width:1500px){.section.menus .food-menu ul.menuInfo li{padding:15px 20px}
 }@media screen and (max-width:380px){.section.menus .food-menu ul.menuInfo li{display:block;padding:8px 15px;width:100% !important}
 }.section.drinks{background-size:cover;background-color:#4a4a4a;background-position:center center;background-repeat:no-repeat;padding-top:100px;color:#FFF}
 .section.drinks .content-image{border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:45px;margin-bottom:50px}
