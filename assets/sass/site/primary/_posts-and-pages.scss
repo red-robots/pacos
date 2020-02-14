@@ -693,6 +693,12 @@ p a {
 		padding-bottom: 0;
 		padding-top: 0;
 	}
+	.gform_wrapper .gfield_captcha_input_container {
+		display: inline-block!important;
+		position: relative;
+	    top: -9px;
+	    margin-left: 10px;
+	}
 }
 
 .sticky-contact-form .gform_confirmation_wrapper {

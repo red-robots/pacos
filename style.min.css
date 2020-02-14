@@ -1983,6 +1983,7 @@ p a:hover{color:#e2080c;opacity:.5}
 .sticky-contact-form .gform_wrapper div.validation_error{display:none}
 .sticky-contact-form .gform_wrapper .validation_message{font-size:12px}
 .sticky-contact-form .gform_wrapper li.gfield.gfield_error{border-top:0;border-bottom:0;background-color:transparent;padding-bottom:0;padding-top:0}
+.sticky-contact-form .gform_wrapper .gfield_captcha_input_container{display:inline-block !important;position:relative;top:-9px;margin-left:10px}
 .sticky-contact-form .gform_confirmation_wrapper{padding:10px;background:green;line-height:1.2;margin-bottom:25px}
 #formContents{display:none}
 .sticky-contact-form.open .icon{-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)}
