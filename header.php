@@ -20,6 +20,16 @@ $urlParam = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'h
 </head>
 
 <body <?php body_class(); ?>>
+
+	<div style='display:none'>
+		<div id='inline_content' class="ajax popup">
+			<a href="https://direct.chownow.com/order/6345/locations/8381" target="_blank">
+				<img src="<?php bloginfo('template_url'); ?>/images/curbside.jpg">
+			</a>
+		</div>
+	</div>
+
+	
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'acstarter' ); ?></a>
 	<a id="toggleMenu"><span></span></a>

@@ -63,6 +63,13 @@
 <?php get_template_part('template-parts/contact-form'); ?>
 <?php } ?>
 
+<script type="text/javascript">
+	window.onload = function() {
+		$.colorbox({inline:true, href:".ajax"});
+	}
+</script>
+
+
 <?php wp_footer(); ?>
 
 </body>
