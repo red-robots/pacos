@@ -63,12 +63,13 @@
 <?php get_template_part('template-parts/contact-form'); ?>
 <?php } ?>
 
+<?php if(is_front_page()) { ?>
 <script type="text/javascript">
 	window.onload = function() {
-		$.colorbox({inline:true, href:".ajax"});
+		//$.colorbox({inline:true, href:".ajax"});
 	}
 </script>
-
+<?php } ?>
 
 <?php wp_footer(); ?>
 
